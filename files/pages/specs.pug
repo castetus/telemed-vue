@@ -6,7 +6,7 @@
         -let specs = {1: 'терапевт/педиатр', 2: 'психолог', 3: 'аллерголог-иммунолог', 4: 'гастроэнтеролог', 5: 'гинеколог', 6: 'дерматолог', 7: 'кардиолог', 8: 'лор', 9: 'невролог', 10: 'ортопед', 11: 'травматолог', 12: 'уролог', 13: 'эндокринолог'}
         each val, index in specs
           .specs__item.swiper-slide 
-            -let path = 'img/specs_' + index + '.jpg'
+            -let path = '~@/assets/img/specs_' + index + '.jpg'
               img.specs__img(src=path, alt="")
               h3.specs__title= val
             if index === 1

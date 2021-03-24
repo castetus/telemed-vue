@@ -2,24 +2,24 @@
 @import "../scss/variables";
 @font-face {
   font-family: Days;
-  src: url("fonts/days_sans_black.otf");
+  src: url("~@/assets/~@/assets/fonts/days_sans_black.otf");
 }
 @font-face {
   font-family: Comfortaa;
-  src: url("fonts/Comfortaa-Regular.ttf");
+  src: url("~@/assets/~@/assets/fonts/Comfortaa-Regular.ttf");
 }
 @font-face {
   font-family: Montserrat;
-  src: url("fonts/Montserrat-Regular.ttf");
+  src: url("~@/assets/fonts/Montserrat-Regular.ttf");
 }
 @font-face {
   font-family: Montserrat;
-  src: url("fonts/Montserrat-SemiBold.ttf");
+  src: url("~@/assets/fonts/Montserrat-SemiBold.ttf");
   font-weight: 600;
 }
 @font-face {
   font-family: Montserrat;
-  src: url("fonts/Montserrat-Bold.ttf");
+  src: url("~@/assets/fonts/Montserrat-Bold.ttf");
   font-weight: 700;
 }
 * {
@@ -140,7 +140,7 @@ button {
     margin: 0 auto;
   }
   &_close {
-    background: url("img/icons/close.svg") center no-repeat;
+    background: url("~@/assets/img/icons/close.svg") center no-repeat;
     background-size: contain;
     width: 28px;
     height: 28px;
@@ -182,9 +182,9 @@ button {
   display: block;
   margin: 0 auto;
 }
-.text_green{
+.text_green {
   color: $color-green;
 }
-.text_orange{
+.text_orange {
   color: $color-orange;
 }

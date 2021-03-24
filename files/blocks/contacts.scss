@@ -1,5 +1,5 @@
-@import '../scss/variables.scss';
-.contacts{
+@import "../scss/variables.scss";
+.contacts {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -10,14 +10,14 @@
   font-size: 14px;
   line-height: 16px;
   margin-top: 16px;
-  &__item{
+  &__item {
     position: relative;
     margin-bottom: 5px;
-    &_phone{
+    &_phone {
       padding-left: 21px;
-      &:before{
-        content: '';
-        background: url('img/icons/call.svg') center no-repeat;
+      &:before {
+        content: "";
+        background: url("~@/assets/img/icons/call.svg") center no-repeat;
         background-size: contain;
         position: absolute;
         left: 2px;
@@ -28,18 +28,18 @@
       //   order: 3;
       // }
     }
-    &_insta{
+    &_insta {
       padding-left: 14px;
-      &:before{
-        content: '';
-        background: url('img/icons/instagram.svg') center no-repeat;
+      &:before {
+        content: "";
+        background: url("~@/assets/img/icons/instagram.svg") center no-repeat;
         background-size: contain;
         position: absolute;
         left: 33px;
         top: 0;
         width: 13px;
         height: 13px;
-        @media screen and (min-width: $tablets){
+        @media screen and (min-width: $tablets) {
           left: 60px;
         }
       }
