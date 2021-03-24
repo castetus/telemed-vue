@@ -1,0 +1,44 @@
+include policy.pug
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    script(src="https://unpkg.com/swiper/swiper-bundle.min.js") 
+    script(src="js/main.js") 
+    link(rel="manifest" href="manifest.json")
+    link(rel="stylesheet", href="https://unpkg.com/swiper/swiper-bundle.min.css")
+    link(rel="stylesheet", href="style.css")
+    link(rel="shortcut icon", href="favicon.ico", type="image/x-icon")
+    title Telemed
+  body
+    include header.pug
+    include menu.pug
+    include main-slider.pug
+    include price.pug
+    include opps.pug
+    include usp.pug
+    include form.pug
+    include stages.pug 
+    include specs.pug
+    include howto.pug
+    include big-form.pug
+    include faq.pug
+    include footer.pug
+    .mask#mask
+    .scroller#scroller
+    .popup#popup-form
+      .btn.btn_close#popup-close
+      +form('получить консультацию')
+    .popup#thankyou
+      .btn.btn_close#popup-close
+      .text-wrapper
+        p.text_center Спасибо за заполнение формы! Мы свяжемся с Вами в ближайшее время!
+    .popup#policy 
+      .btn.btn_close#popup-close
+      +policy
+    .popup#licence 
+      .btn.btn_close#popup-close
+      include licence.pug
+    script(src="js/mango.js")
