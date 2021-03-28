@@ -24,6 +24,9 @@ export default {
   mounted() {
     eventBus.$on('menuOpen', () => {
       this.menuOpen()
+    }),
+    eventBus.$on('close', () => {
+      this.isVisible = false
     })
   },
   methods: {

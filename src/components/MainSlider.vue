@@ -1,30 +1,27 @@
 <template lang="pug">
   .slider 
     .container_full-width
-      swiper.main-slider.swiper-container#main-slider(ref="swiper"
-        direction="horizontal"
-        :mousewheel-control="true"
-        :performance-mode="false"
-        :pagination-visible="true"
-        :pagination-clickable="true")
+      .main-slider.swiper-container
         .swiper-wrapper
           .main-slider__slide.swiper-slide(v-for="slide in slides" :key="slide.id")
-            picture.main-slider__picture
-              source(:srcset="slide.pathBig" media="(min-width: 575px)")
-              img.main-slider__img(:src="slide.pathSmall", alt="")
-            .main-slider__mask
-            .container.container_absolute
-              .main-slider__text 
-                p {{slide.text}}
-                p Врач на связи круглосуточно!
-              a.btn.btn_orange.main-slider__button.btn_popup(data-target="#popup-form") заказать полис
-        .swiper-pagination
+              picture.main-slider__picture
+                source(:srcset="pathBig(slide.id)" media="(min-width: 575px)")
+                img.main-slider__img(:src="pathSmall(slide.id)", alt="")
+              .main-slider__mask
+              .container.container_absolute
+                .main-slider__text 
+                  p {{slide.text}}
+                  p Врач на связи круглосуточно!
+                a.btn.btn_orange.main-slider__button.btn_popup(@click="popupOpen('ContactForm')") заказать полис
+        .swiper-pagination(slot="pagination")
         .slider-button-prev.main-slider__prev
         .slider-button-next.main-slider__next
     a.btn.btn_centered.btn_orange.main-slider__bottom-btn.btn_popup(data-target="#popup-form") заказать полис
 </template>
 
 <script>
+import Swiper from 'swiper'
+import {eventBus} from "../main.js"
 export default {
   name: 'mainSlider',
   data() {
@@ -32,11 +29,54 @@ export default {
       slides: [
         {
           id: 1,
-          pathBig: '~@/assets/img/banner_1.jpg',
-          pathSmall: '~@/assets/img/banner_1_s.jpg',
           text: 'Заболел ребенок или другой член семьи?',
+        },
+        {
+          id: 2,
+          text: 'Чувствуете себя плохо, но не хотите идти в поликлинику?',
+        },
+        {
+          id: 3,
+          text: 'Заболел ребенок или другой член семьи?',
+        },
+        {
+          id: 4,
+          text: 'Необходимо второе мнение специалиста по сложному вопросу?',
         }
-      ]
+      ],
+    }
+  },
+  computed: {
+    swiper() {
+      return this.$refs.mainSlider.$swiper
+    }
+  },
+  mounted() {
+    // eslint-disable-next-line
+    const mainSlider = new Swiper('.main-slider', {
+      pagination: {
+            el: '.swiper-pagination',
+            type: 'bullets',
+            clickable: true,
+            bulletClass: 'bullet',
+            bulletActiveClass: 'bullet_active'
+          },
+          navigation: {
+            nextEl: '.main-slider__next',
+            prevEl: '.main-slider__prev',
+          },
+          loop: true,
+    })
+  },
+  methods: {
+    pathBig(id){
+      return require(`../assets/img/banner_${id}.jpg`)
+    },
+    pathSmall(id){
+      return require(`../assets/img/banner_${id}_s.jpg`)
+    },
+    popupOpen(elem){
+      eventBus.$emit('popupOpen', elem)
     }
   }
 }
@@ -96,7 +136,7 @@ export default {
   }
   &__bottom-btn{
     @media screen and (min-width: $desktop){
-      display: none;
+      display: none!important;
     }
   }
   &__prev{
