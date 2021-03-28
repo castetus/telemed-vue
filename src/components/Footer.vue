@@ -5,13 +5,13 @@
         img.footer__logo(src="~@/assets/img/logo.svg", alt="med-tele.ru")
         ul.footer__menu
           li.footer__menu-item 
-            a.footer__menu-link.link.btn_popup(href="" data-target="#policy") Политика конфиденциальности
+            a.footer__menu-link.link.btn_popup(@click.prevent="open('Policy')") Политика конфиденциальности
           li.footer__menu-item 
             a.footer__menu-link.link(href="https://apps.apple.com/us/app/%D0%B4%D0%BE%D0%BA%D1%82%D0%BE%D1%80-%D1%80%D1%8F%D0%B4%D0%BE%D0%BC-%D1%82%D0%B5%D0%BB%D0%B5%D0%BC%D0%B5%D0%B4/id1293844621" target="_blank") Скачать приложение в App Store
           li.footer__menu-item 
             a.footer__menu-link.link(href="https://play.google.com/store/apps/details?id=ru.drclinics.telemed" target="_blank") Скачать приложение в Google Play
           li.footer__menu-item 
-            a.footer__menu-link.link.btn_popup(data-target="#licence") Лицензия
+            a.footer__menu-link.link.btn_popup(@click.prevent="open('Licence')") Лицензия
         ul.footer__menu.footer__company-details 
           li.footer__menu-item Телемед Полис
           li.footer__menu-item ИНН: 745111087681
@@ -24,10 +24,16 @@
 
 <script>
 import Contacts from './Contacts'
+import { eventBus } from '../main'
 export default {
   name: 'AppFooter',
   components: {
     Contacts
+  },
+  methods: {
+    open(elem){
+      eventBus.$emit('popupOpen', elem)
+    }
   }
 }
 </script>

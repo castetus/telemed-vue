@@ -188,3 +188,12 @@ button {
 .text_orange {
   color: $color-orange;
 }
+.block{
+  &_white{
+    padding: 40px 0;
+  }
+  &_pink{
+    background-color: $color-pink;
+    padding: 21px 0;
+  }
+}
