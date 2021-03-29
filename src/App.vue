@@ -18,7 +18,7 @@
       <div class="container">
         <h2 class="heading heading_green">форма заявки</h2>
         <div class="big-form__wrapper">
-
+          <big-form></big-form>
         </div>
       </div>
     </div>
@@ -48,7 +48,9 @@ import HowTo from './components/HowTo'
 import Faq from './components/Faq'
 import AppFooter from './components/Footer'
 import ThankYou from './components/ThankYou'
+import ThankYouBig from './components/ThankYouBig'
 import Licence from './components/Licence'
+import BigForm from './components/BigForm'
 // import Policy from './components/Policy'
 import { eventBus } from './main'
 export default {
@@ -64,9 +66,11 @@ export default {
     Stages,
     Specs,
     HowTo,
+    BigForm,
     Faq,
     AppFooter,
     ThankYou,
+    ThankYouBig,
     Licence,
     // Policy
   },
