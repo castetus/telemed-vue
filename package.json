@@ -11,8 +11,8 @@
     "core-js": "^3.6.5",
     "swiper": "^5.4.5",
     "vue": "^2.6.11",
-    "vue-awesome-swiper": "^4.1.1",
     "vue-swiper2": "^2.0.0",
+    "vuejs-datepicker": "^1.6.2",
     "vuelidate": "^0.7.6"
   },
   "devDependencies": {
