@@ -9,7 +9,7 @@
           br 
           | без ожидания и очередей!
         .header__cta 
-          a.btn.btn_outlined.btn_centered.btn_popup(data-target="#popup-form" @click="popupOpen('ContactForm')") заказать полис
+          a.btn.btn_outlined.btn_centered.btn_popup(data-target="#popup-form" @click="popupOpen('ContactForm')") заказать звонок
         contacts
         button.header__menu-button#dropdown(@click="menuOpen")
 </template>

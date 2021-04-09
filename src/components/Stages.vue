@@ -16,12 +16,13 @@
             .stages__item-wrapper
               h3.stages__title {{item.title}}
               p.stages__text {{item.text}}
-              a.btn.btn_green.stages__button(href="#big-form") заказать полис
+              a.btn.btn_green.stages__button(href="#big-form" @click="showForm") заказать полис
             img.stages__img(:src="path(item.id)", alt="")
 </template>
 
 <script>
 import Swiper from 'swiper'
+import { eventBus } from '../main'
 export default {
   name: 'Stages',
   data() {
@@ -79,6 +80,9 @@ export default {
     }
   },
   methods: {
+    showForm(){
+      eventBus.$emit('showForm')
+    },
     path(id) {
       return require(`../assets/img/stages_${id}.png`)
     },

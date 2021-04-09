@@ -17,7 +17,8 @@
     <div class="block_pink" id="big-form">
       <div class="container">
         <h2 class="heading heading_green">форма заявки</h2>
-        <div class="big-form__wrapper">
+        <button style="margin-bottom: 20px" class="btn btn_green btn_centered" @click="showForm" v-show="!isFormVisible">Заполнить форму</button>
+        <div class="big-form__wrapper" v-show="isFormVisible">
           <big-form></big-form>
         </div>
       </div>
@@ -49,9 +50,10 @@ import Faq from './components/Faq'
 import AppFooter from './components/Footer'
 import ThankYou from './components/ThankYou'
 import ThankYouBig from './components/ThankYouBig'
+import Cookies from './components/Cookies'
 import Licence from './components/Licence'
 import BigForm from './components/BigForm'
-// import Policy from './components/Policy'
+import Policy from './components/Policy'
 import { eventBus } from './main'
 export default {
   name: 'App',
@@ -71,15 +73,19 @@ export default {
     AppFooter,
     ThankYou,
     ThankYouBig,
+    Cookies,
     Licence,
-    // Policy
+    Policy
   },
   data (){
     return {
+      apiUrl: window.location.href + 'intApi.php',
       isMaskVisible: false,
       isScrollerVisible: false,
       isPopupVisible: false,
-      component: 'ContactForm'
+      component: 'ContactForm',
+      isFormVisible: false,
+      agreement: false,
     }
   },
   created() {
@@ -93,6 +99,9 @@ export default {
     })
   },
   mounted() {
+    eventBus.$on('showForm', () => {
+      this.showForm()
+    })
     eventBus.$on('menuOpen', () => {
       this.isMaskVisible = true
     }),
@@ -104,9 +113,28 @@ export default {
       this.isPopupVisible = true
       this.isMaskVisible = true
       this.component = elem
+    }),
+    eventBus.$on('sendForm', (data) => {
+      this.createDeal(data)
+    }),
+    eventBus.$on('setAgreement', () => {
+      localStorage.setItem('cookie', 'true')
     })
+    this.showCookies()
+    // this.$metrika.hit()
   },
   methods: {
+    showCookies() {
+      const check = localStorage.getItem('cookie')
+      if (!check){
+        this.isPopupVisible = true
+        this.isMaskVisible = true
+        this.component = 'Cookies'
+      }
+    },
+    showForm(){
+      this.isFormVisible = true
+    },
     close() {
       eventBus.$emit('close')
     },
@@ -124,6 +152,36 @@ export default {
                   clearInterval(scroll)
               }
           }, animationTime / framesCount);
+    },
+    async createDeal(data) {
+      console.log(data)
+
+      try {
+        const request = await fetch(this.apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json;charset=utf-8'
+          },
+          body: JSON.stringify(data.content)
+        })
+        const response = await request.text()
+        if (request.ok){
+          this.thankyou(data.type)
+        }
+        console.log(response)
+      } catch (error) {
+        console.log(error)
+      }
+    },
+    thankyou(type){
+      if (type === 'small'){
+        eventBus.$emit('popupOpen', 'ThankYou')
+      } else if (type === 'big'){
+        eventBus.$emit('popupOpen', 'ThankYouBig')
+      }
+      setTimeout(() => {
+        eventBus.$emit('close')
+      }, 2500);
     }
   }
 }

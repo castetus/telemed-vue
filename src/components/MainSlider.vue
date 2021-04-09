@@ -16,7 +16,7 @@
         .swiper-pagination(slot="pagination")
         .slider-button-prev.main-slider__prev
         .slider-button-next.main-slider__next
-    a.btn.btn_centered.btn_orange.main-slider__bottom-btn.btn_popup(data-target="#popup-form") заказать полис
+    a.btn.btn_centered.btn_orange.main-slider__bottom-btn.btn_popup(@click="popupOpen('ContactForm')") заказать полис
 </template>
 
 <script>
@@ -29,7 +29,7 @@ export default {
       slides: [
         {
           id: 1,
-          text: 'Заболел ребенок или другой член семьи?',
+          text: 'Требуется расшифровка анализов или второе врачебное мнение?',
         },
         {
           id: 2,

@@ -4,8 +4,8 @@
           a.link(href="tel:78009447129") 8 (800) 333-12-49
         li.contacts__item
           a.link(href="mailto:key@med-tele.ru") key@med-tele.ru
-        li.contacts__item.contacts__item_insta
-          a.link(href="") meditel
+        //- li.contacts__item.contacts__item_insta
+        //-   a.link(href="") meditel
 </template>
 
 <script>

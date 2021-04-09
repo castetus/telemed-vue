@@ -20,6 +20,8 @@
         .footer__contacts-wrapper
           contacts
           span.footer__copyright (c) Телемед 2021
+    .container
+      span.footer__licence-text ООО "Медицинская компания Доктор рядом", г.Москва, пр. 1-й Нагатинский, д. 11
 </template>
 
 <script>
@@ -80,6 +82,9 @@ export default {
     color: $color-green;
     float: right;
     margin-top: -10px;
+  }
+  &__licence-text{
+    font-size: 8px;
   }
 }
 </style>

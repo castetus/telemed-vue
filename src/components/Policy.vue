@@ -1,15 +1,35 @@
 <template lang="pug">
-  .policy   
-    h2.heading.heading_2.heading_orange Политика обработки персональных данных
-    iframe(height="100%" width="100%" :src="path")
+  .swiper-container.policy 
+    .swiper-wrapper 
+      img.swiper-slide(v-for="index in 6" :key="index" :src="getImgPath(index)", alt="")
+    .slider-button-prev 
+    .slider-button-next
 </template>
 
 <script>
+import Swiper from 'swiper'
 export default {
   name: 'Policy',
+  data() {
+    return {
+      basePath: 'policy_pages-to-jpg-000'
+    }
+  },
+  mounted() {
+    setTimeout(() => {
+      // eslint-disable-next-line
+      const policySlider = new Swiper('.policy', {
+        loop: true,
+        navigation: {
+          nextEl: '.slider-button-next',
+          prevEl: '.slider-button-prev',
+        },
+      })
+    }, 200);
+  },
   methods: {
-    path() {
-      return require("../assets/policy.pdf")
+    getImgPath(index){
+      return require('../assets/img/' + this.basePath + index + '.jpg')
     }
   }
 }

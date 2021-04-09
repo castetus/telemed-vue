@@ -181,7 +181,9 @@ export default {
     this.$watch('fields', function () {
       eventBus.$emit('change', {
         id: this.id,
-        fields: this.fields
+        fields: this.fields,
+        phone: this.phoneNumber,
+        email: this.email
       })
     }, {deep: true})
     eventBus.$on('proceed', () => {

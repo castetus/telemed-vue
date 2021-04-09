@@ -184,6 +184,10 @@ export default {
   mounted() {
     eventBus.$on('change', (data) => {
       this.forms[data.id].fields = data.fields
+      if (data.phone !== '' && data.email !== ''){
+        this.forms[data.id].phone = data.phone
+        this.forms[data.id].email = data.email
+      }
     })
     eventBus.$on('double', () => {
       this.double = !this.double
@@ -257,12 +261,12 @@ export default {
       if (this.stage === 1){
         this.proceed()
       }
-      // if (this.correctData){
+      if (this.correctData){
         if (this.stage < 3){
           this.stage++
           eventBus.$emit('changeStage', this.stage)
         }
-      // }
+      }
     },
     stageMinus(){
       if (this.stage > 1){
@@ -270,26 +274,211 @@ export default {
         eventBus.$emit('changeStage', this.stage)
       }
     },
-    async sendForm(){
-      const formData = new FormData()
-      formData.append('formType', 'form')
-      for (let form of this.forms){
-        formData.append('form: ', form.heading)
-        for (let key in form.fields){
-          formData.append(key, this.preparedData(form.fields[key]))
-        }
+    sendForm(){          
+      const firstForm = this.forms[0]
+
+      const data = {
+        type: 'big',
+        content: []
       }
-      const response = await fetch(this.url, {
-        method: 'POST',
-        body: formData
-      })
-      if (response.ok){
-        setTimeout(() => {
-          eventBus.$emit('popupOpen', 'ThankYouBig')
-        }, 500);
-      } else {
-        console.log('error')
+
+for (let i = 1; i < this.forms.length; i++){
+  
+
+const dataItem = 
+
+  {
+      "name": "Сделка от " + firstForm.fields.name + " " + firstForm.fields.surName,
+      "price": this.calculateSum(),
+      "pipeline_id":4171915,
+      "_embedded":{
+        "contacts":[
+            {
+              "name": firstForm.fields.name + " " + firstForm.fields.surName,
+              "first_name": firstForm.fields.name,
+              "last_name": firstForm.fields.surName,
+              "custom_fields_values":[
+                  {
+                    "field_id":829811,
+                    "values":[
+                        {
+                          "value": firstForm.phone,
+                        }
+                    ]
+                  },
+                  {
+                    "field_id":829813,
+                    "values":[
+                        {
+                          "value": firstForm.email,
+                        }
+                    ]
+                  }
+              ]
+            }
+        ],
+      },
+      "custom_fields_values":[
+      {
+          "field_id": 844319,
+          "field_name": "Дата начала страхования",
+          "values": [
+              {
+                  "value": this.dateFrom.getTime() / 1000
+              }
+          ]
+      },
+      {
+          "field_id": 844205,
+          "field_name": "Пол",
+          "field_code": "CUSTOMERGENDER",
+          "field_type": "textarea",
+          "values": [
+              {
+                  "value": this.forms[i].fields.gender
+              }
+          ]
+      },
+      {
+          "field_id": 844201,
+          "field_name": "Дата рождения",
+          "field_code": "DATEOFBIRTH",
+          "field_type": "textarea",
+          "values": [
+              {
+                  "value": this.preparedData(this.forms[i].fields.birthDate)
+              }
+          ]
+      },
+      {
+          "field_id": 844207,
+          "field_name": "Паспорт серия",
+          "field_code": "PASSPORTSERIE",
+          "field_type": "textarea",
+          "values": [
+              {
+                  "value": this.forms[i].fields.passportNumber.serie
+              }
+          ]
+      },
+      {
+          "field_id": 844209,
+          "field_name": "Паспорт номер",
+          "field_code": "PASSPORTNUMBER",
+          "field_type": "textarea",
+          "values": [
+              {
+                  "value": this.forms[i].fields.passportNumber.number
+              }
+          ]
+      },
+      {
+          "field_id": 844211,
+          "field_name": "Дата паспорта",
+          "field_code": "PASSPORTDATE",
+          "field_type": "textarea",
+          "values": [
+              {
+                  "value": this.preparedData(this.forms[i].fields.passportDate)
+              }
+          ]
+      },
+      {
+          "field_id": 844213,
+          "field_name": "Паспорт кем выдан",
+          "field_code": "PASSPORTWHOISSUED",
+          "field_type": "textarea",
+          "values": [
+              {
+                  "value": this.forms[i].fields.passportEmitter
+              }
+          ]
+      },
+      {
+          "field_id": 844215,
+          "field_name": "Код подразделения",
+          "field_code": "DIVISIONNUMBER",
+          "field_type": "textarea",
+          "values": [
+              {
+                  "value": this.forms[i].fields.passportCode
+              }
+          ]
+      },
+      {
+          "field_id": 844217,
+          "field_name": "Адрес регистрации",
+          "field_code": "CUSTOMERADDRESS",
+          "field_type": "textarea",
+          "values": [
+              {
+                  "value": this.forms[i].fields.customerAddress
+              }
+          ]
+      },
+      // {
+      //     "field_id": 26617,
+      //     "field_name": "Страховая компания",
+      //     "field_code": null,
+      //     "field_type": "select",
+      //     "values": [
+      //         {
+      //             "value": "Ингосстрах",
+      //             "enum_id": 12945
+      //         }
+      //     ]
+      // },
+      {
+          "field_id": 844267,
+          "field_name": "Тип страховки",
+          "field_code": null,
+          "field_type": "select",
+          "values": [
+              {
+                  "value": "Телемед",
+                  "enum_id": 12935
+              }
+          ]
+      },
+      {
+          "field_id": 844321,
+          "field_name": "Фамилия",
+          "field_code": null,
+          "field_type": "text",
+          "values": [
+              {
+                  "value": this.forms[i].fields.surName
+              }
+          ]
+      },
+      {
+          "field_id": 844323,
+          "field_name": "Имя",
+          "field_code": null,
+          "field_type": "text",
+          "values": [
+              {
+                  "value": this.forms[i].fields.name
+              }
+          ]
+      },
+      {
+          "field_id": 844325,
+          "field_name": "Отчество",
+          "field_code": null,
+          "field_type": "text",
+          "values": [
+              {
+                  "value": this.forms[i].fields.patrName
+              }
+          ]
       }
+      ],
+  }
+
+data.content.push(dataItem)
+}
+eventBus.$emit('sendForm', data)
     }
   }
 }
@@ -441,9 +630,5 @@ export default {
       color: #069E2D; }
   .btn_centered {
     margin: 0 auto;}
-    .btn_disabled{
-      background-color: #c4c4c4;
-      border-color: #c4c4c4;
-      cursor: auto;
-    }
+
 </style>

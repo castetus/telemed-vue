@@ -11,11 +11,12 @@
                 p.opps__text {{item.text}}
           .slider-button-next.opps__nav-button.opps__nav-button-next
           .slider-button-prev.opps__nav-button.opps__nav-button-prev
-      a.btn.btn_centered.btn_orange(href="#big-form") заказать полис
+      a.btn.btn_centered.btn_orange(href="#big-form" @click="showForm") заказать полис
 </template>
 
 <script>
 import Swiper from 'swiper'
+import { eventBus } from '../main'
 export default {
   name: 'Opps',
   data() {
@@ -55,6 +56,9 @@ export default {
       })
   },
   methods: {
+    showForm(){
+      eventBus.$emit('showForm')
+    },
     path(id){
       return require(`../assets/img/icons/opps_${id}.svg`)
     }

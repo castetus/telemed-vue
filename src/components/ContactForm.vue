@@ -42,26 +42,35 @@ export default {
         if (this.$v.$error){
           return
         }
-        const formData = new FormData()
-        formData.append('name', this.name)
-        formData.append('phone', this.phone)
-        try {
-        const response = await fetch(this.url, {
-          method: 'POST',
-          body: formData
-        })
-        const result = await response.text()
-        if (result === 'sent'){
-          eventBus.$emit('popupOpen', 'ThankYou')
-          setTimeout(() => {
-            eventBus.$emit('close')
-          }, 2000);
-        } else {
-          eventBus.$emit('popupOpen', 'error')
-        }
-      } catch (error) {
-        console.log(error)
-      }
+        const data = {
+          type: 'small',
+          content: [
+          {
+            "name": "Сделка от " + this.name,
+            "pipeline_id":4171915,
+            "_embedded":{
+              "contacts":[
+                  {
+                    "name": this.name,
+                    "custom_fields_values":[
+                        {
+                          "field_id":829811,
+                          "values":[
+                              {
+                                "value": this.phone
+                              }
+                          ]
+                        },
+                    ]
+                  }
+              ],
+            },
+          }
+        ]
+        } 
+      
+        eventBus.$emit('sendForm', data)
+      
     },
     reset() {
       this.$v.$reset()
