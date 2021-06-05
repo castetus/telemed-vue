@@ -1,5 +1,10 @@
 # telemed
 
+Landing page for insurance company. Vue.js + BEM-style markup.
+Features: 
+1. Big form in which customer can add any number of insured persons.
+2. AmoCRM custom integration.
+
 ## Project setup
 ```
 npm install
@@ -19,6 +24,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
