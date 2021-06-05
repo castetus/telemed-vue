@@ -320,7 +320,7 @@ const dataItem =
       },
       "custom_fields_values":[
       {
-          "field_id": 844319,
+          "field_id": 907387,
           "field_name": "Дата начала страхования",
           "values": [
               {
@@ -331,8 +331,6 @@ const dataItem =
       {
           "field_id": 844205,
           "field_name": "Пол",
-          "field_code": "CUSTOMERGENDER",
-          "field_type": "textarea",
           "values": [
               {
                   "value": this.forms[i].fields.gender
@@ -340,10 +338,8 @@ const dataItem =
           ]
       },
       {
-          "field_id": 844201,
+          "field_id": 912891,
           "field_name": "Дата рождения",
-          "field_code": "DATEOFBIRTH",
-          "field_type": "textarea",
           "values": [
               {
                   "value": this.preparedData(this.forms[i].fields.birthDate)
@@ -353,8 +349,6 @@ const dataItem =
       {
           "field_id": 844207,
           "field_name": "Паспорт серия",
-          "field_code": "PASSPORTSERIE",
-          "field_type": "textarea",
           "values": [
               {
                   "value": this.forms[i].fields.passportNumber.serie
@@ -364,8 +358,6 @@ const dataItem =
       {
           "field_id": 844209,
           "field_name": "Паспорт номер",
-          "field_code": "PASSPORTNUMBER",
-          "field_type": "textarea",
           "values": [
               {
                   "value": this.forms[i].fields.passportNumber.number
@@ -375,8 +367,6 @@ const dataItem =
       {
           "field_id": 844211,
           "field_name": "Дата паспорта",
-          "field_code": "PASSPORTDATE",
-          "field_type": "textarea",
           "values": [
               {
                   "value": this.preparedData(this.forms[i].fields.passportDate)
@@ -386,8 +376,6 @@ const dataItem =
       {
           "field_id": 844213,
           "field_name": "Паспорт кем выдан",
-          "field_code": "PASSPORTWHOISSUED",
-          "field_type": "textarea",
           "values": [
               {
                   "value": this.forms[i].fields.passportEmitter
@@ -397,8 +385,6 @@ const dataItem =
       {
           "field_id": 844215,
           "field_name": "Код подразделения",
-          "field_code": "DIVISIONNUMBER",
-          "field_type": "textarea",
           "values": [
               {
                   "value": this.forms[i].fields.passportCode
@@ -408,8 +394,6 @@ const dataItem =
       {
           "field_id": 844217,
           "field_name": "Адрес регистрации",
-          "field_code": "CUSTOMERADDRESS",
-          "field_type": "textarea",
           "values": [
               {
                   "value": this.forms[i].fields.customerAddress
@@ -431,20 +415,16 @@ const dataItem =
       {
           "field_id": 844267,
           "field_name": "Тип страховки",
-          "field_code": null,
-          "field_type": "select",
           "values": [
               {
                   "value": "Телемед",
-                  "enum_id": 12935
+                  "enum_id": 614969
               }
           ]
       },
       {
           "field_id": 844321,
           "field_name": "Фамилия",
-          "field_code": null,
-          "field_type": "text",
           "values": [
               {
                   "value": this.forms[i].fields.surName
@@ -454,8 +434,6 @@ const dataItem =
       {
           "field_id": 844323,
           "field_name": "Имя",
-          "field_code": null,
-          "field_type": "text",
           "values": [
               {
                   "value": this.forms[i].fields.name
@@ -465,8 +443,6 @@ const dataItem =
       {
           "field_id": 844325,
           "field_name": "Отчество",
-          "field_code": null,
-          "field_type": "text",
           "values": [
               {
                   "value": this.forms[i].fields.patrName

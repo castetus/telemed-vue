@@ -14,9 +14,9 @@
             a.footer__menu-link.link.btn_popup(@click.prevent="open('Licence')") Лицензия
         ul.footer__menu.footer__company-details 
           li.footer__menu-item Телемед Полис
-          li.footer__menu-item ИНН: 745111087681
-          li.footer__menu-item ОГРНИП: 321470400013490
-          li.footer__menu-item г. Мурино, ул. Шувалова, д.13/10
+          li.footer__menu-item ИНН: 7814776170
+          li.footer__menu-item ОГРН: 1207800065252
+          li.footer__menu-item Санкт-Петербург, ул. Большая Пушкарская, д.17, оф.3
         .footer__contacts-wrapper
           contacts
           span.footer__copyright (c) Телемед 2021

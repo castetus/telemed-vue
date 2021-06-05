@@ -19,21 +19,3 @@ rule.use('style-resource')
     ],
   })
 }
-// module.exports = {
-//   pluginOptions: {
-//     'style-resources-loader': {
-//       'preProcessor': 'scss',
-//       'patterns': [
-//         path.resolve(__dirname, './src/**/*.scss'),
-//       ]
-//     }
-//   }
-// }
-// module.exports = {
-//   pluginOptions: {
-//     'style-resources-loader': {
-//       preProcessor: 'scss',
-//       patterns: []
-//     }
-//   }
-// }

@@ -1,8 +1,6 @@
 <template>
   <div class="thank-you">
     <div class="thank-you__wrapper">
-      <button class="thank-you__close-button"
-        @click="closePopup"></button>
       <div class="resume-text">
         <h2 class="heading heading_2 heading_green">Спасибо за оформление полиса с "Телемед Полис"!</h2>
         <p>После оформления заявки на сайте Вам на почту придет счёт на оплату от страховой компании. После оплаты Вы получите чек и оригинал полиса, который нужно подписать и отправить первую страницу по адресу <a href="mailto:key@med-tele.ru">key@med-tele.ru</a> вместе со сканами (фото) первой страницы паспорта и страницы с пропиской.</p>
@@ -30,6 +28,7 @@ export default {
   .thank-you{
     position: fixed;
     top: 0;
+    left: 0;
     width: 100vw;
     height: 100vh;
     z-index: 30;

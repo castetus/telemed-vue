@@ -1,7 +1,7 @@
 <template lang="pug">
       ul.contacts 
         li.contacts__item.contacts__item_phone
-          a.link(href="tel:78009447129") 8 (800) 333-12-49
+          a.link(href="tel:78003331249") 8 (800) 333-12-49
         li.contacts__item
           a.link(href="mailto:key@med-tele.ru") key@med-tele.ru
         //- li.contacts__item.contacts__item_insta

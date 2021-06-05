@@ -6,10 +6,11 @@
         .faq__item(v-for="item in items" :key="item.id")
           .faq__title(@click="activate(item.id)" :class="{faq__title_active: (item.id == activeIndex)}") {{item.title}}
           .faq__content(v-html="item.html" :class="{faq__content_active: (item.id == activeIndex)}")
-      a.btn.btn_green.btn_centered.btn_popup(data-target="#popup-form") заказать полис
+      a.btn.btn_green.btn_centered.btn_popup(data-target="#popup-form" @click="popupOpen") заказать полис
 </template>
 
 <script>
+import {eventBus} from '../main';
 export default {
   name: 'Faq',
   data() {
@@ -83,6 +84,9 @@ export default {
   methods: {
     activate(id){
       this.activeIndex = id
+    },
+    popupOpen() {
+      eventBus.$emit('popupOpen', 'ContactForm')
     }
   }
 }

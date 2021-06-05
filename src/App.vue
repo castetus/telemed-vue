@@ -154,6 +154,7 @@ export default {
           }, animationTime / framesCount);
     },
     async createDeal(data) {
+      this.thankyou(data.type)
       console.log(data)
 
       try {
@@ -179,9 +180,9 @@ export default {
       } else if (type === 'big'){
         eventBus.$emit('popupOpen', 'ThankYouBig')
       }
-      setTimeout(() => {
-        eventBus.$emit('close')
-      }, 2500);
+      // setTimeout(() => {
+      //   eventBus.$emit('close')
+      // }, 2500);
     }
   }
 }
