@@ -3,7 +3,7 @@
     <app-header></app-header>
     <app-menu></app-menu>
     <main-slider></main-slider>
-    <price></price>
+    <price :price="commonPrice"></price>
     <opps></opps>
     <usp></usp>
     <div class="block_pink">
@@ -19,7 +19,7 @@
         <h2 class="heading heading_green">форма заявки</h2>
         <button style="margin-bottom: 20px" class="btn btn_green btn_centered" @click="showForm" v-show="!isFormVisible">Заполнить форму</button>
         <div class="big-form__wrapper" v-show="isFormVisible">
-          <big-form></big-form>
+          <big-form :price="commonPrice"></big-form>
         </div>
       </div>
     </div>
@@ -86,6 +86,7 @@ export default {
       component: 'ContactForm',
       isFormVisible: false,
       agreement: false,
+      commonPrice: 1800,
     }
   },
   created() {

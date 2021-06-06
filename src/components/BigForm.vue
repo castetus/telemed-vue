@@ -72,9 +72,8 @@
       <p>После оплаты доступ начинает действовать через 3 дня сроком на 12 месяцев</p>
     </div>
     <div class="sale-offer">
-      <p>Мы предоставляем скидку на оформление полиса на второго и последующих застрахованных:<br>
-          Стоимость одного полиса <span class="text_orange"><b>2700р.</b></span><br>
-          Стоимость каждого следующего полиса <span class="text_green"><b>1800р.</b></span></p>
+      <p>Мы снизили цены!<br>
+          Стоимость одного полиса теперь всего <span class="text_orange"><b>{{price}}р.</b></span><br></p>
     </div>
     <button
       class="btn btn_green btn_centered"
@@ -133,6 +132,9 @@ export default {
     Datepicker,
     // ThankYouBig
   },
+  props: {
+    price: Number,
+  },
   data() {
     return {
       url: window.location.href + '/mailer.php',
@@ -174,7 +176,7 @@ export default {
       dateFrom: this.calculateDateFrom(),
       dateTo: this.calculateDateTo(this.calculateDateFrom()),
       correctData: true,
-      cost: [2700],
+      cost: [this.price],
       showPopup: false,
     }
   },
@@ -255,7 +257,7 @@ export default {
         fields: {}
       }
       this.forms.push(newForm)
-      this.cost.push(1800)
+      this.cost.push(this.price)
     },
     stagePlus(){
       if (this.stage === 1){
